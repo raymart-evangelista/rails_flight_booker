@@ -2,18 +2,20 @@
 <p>Find me in app/views/flights/index.html.erb</p>
 
 <%= form_with url: "/flights", method: :get do |form| %>
-  <%= form.label :departure_id, "Departing Airport" %>
-  <%= select_tag :departure_id, options_for_select(@airport_options) %>
+  <%= form.label :departure_code, "Departing Airport" %>
+  <%= select_tag :departure_code, options_for_select(@airport_options) %>
 
-  <%= form.label :arrival_id, "Arriving Airport" %>
-  <%= select_tag :arrival_id, options_for_select(@airport_options) %>
+  <%= form.label :arrival_code, "Arriving Airport" %>
+  <%= select_tag :arrival_code, options_for_select(@airport_options) %>
 
   <%= form.label :passenger_amt, "Passengers" %>
   <%= select_tag :passenger_amt, options_for_select([1,2,3,4]) %>
 
   <%= form.label "Flight date" %>
-  <%= select_date Time.now, order: [:month, :day, :year] %>
-  <%#= date_select("article", "written_on", prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }) %>
+  <%= select_tag :month, options_for_select(@month_options) %>
+  <%= select_tag :day, options_for_select(@day_options) %>
+  <%= select_tag :year, options_for_select(@year_options) %>
+  <%# <%= select_date Time.now, order: [:month, :day, :year] %>
   <%= form.submit "Search" %>
 <% end %>
   
