@@ -1,7 +1,13 @@
 <h1>Flights#index</h1>
 <p>Find me in app/views/flights/index.html.erb</p>
 
+
 <%= form_with url: "/flights", method: :get do |form| %>
+  <% @airport_options = Airport.all.map { |a| [a.code] } %>
+  <% @month_options = Flight.all.map { |f| [f.start_datetime.month] }.uniq %>
+  <% @day_options = Flight.all.map { |f| [f.start_datetime.day] }.uniq %>
+  <% @year_options = Flight.all.map { |f| [f.start_datetime.year] }.uniq %>
+
   <%= form.label :departure_code, "Departing Airport" %>
   <%= select_tag :departure_code, options_for_select(@airport_options) %>
 
