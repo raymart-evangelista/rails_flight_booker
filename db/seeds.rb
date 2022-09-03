@@ -35,6 +35,12 @@ Flight.create!([{
 },
 {
   departure_id: 1,
+  arrival_id: 2,
+  start_datetime: DateTime.civil(2022, 9, 19, 7, 30),
+  duration: 1.hour+35.minutes
+},
+{
+  departure_id: 1,
   arrival_id: 3,
   start_datetime: DateTime.civil(2022, 9, 20, 7, 30),
   duration: 5.hour+40.minutes
