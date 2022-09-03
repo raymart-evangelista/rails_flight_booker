@@ -1,0 +1,8 @@
+<% if @path.nil? %>
+<% else %>
+  <% if @path.exists? %>
+    <p>A path exists!</p>
+  <% else %>
+    <p>NO path exists!</p>
+  <% end %>
+<% end %>

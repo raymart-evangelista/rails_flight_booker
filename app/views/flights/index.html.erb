@@ -1,27 +1,5 @@
 <h1>Flights#index</h1>
 <p>Find me in app/views/flights/index.html.erb</p>
 
-
-<%= form_with url: "/flights", method: :get do |form| %>
-  <% @airport_options = Airport.all.map { |a| [a.code, a.id] } %>
-  <% @month_options = Flight.all.map { |f| [f.start_datetime.month] }.uniq %>
-  <% @day_options = Flight.all.map { |f| [f.start_datetime.day] }.uniq %>
-  <% @year_options = Flight.all.map { |f| [f.start_datetime.year] }.uniq %>
-
-  <%= form.label :departure_code, "Departing Airport" %>
-  <%= select_tag :departure_code, options_for_select(@airport_options) %>
-
-  <%= form.label :arrival_code, "Arriving Airport" %>
-  <%= select_tag :arrival_code, options_for_select(@airport_options) %>
-
-  <%= form.label :passenger_amt, "Passengers" %>
-  <%= select_tag :passenger_amt, options_for_select([1,2,3,4]) %>
-
-  <%= form.label "Flight date" %>
-  <%= select_tag :month, options_for_select(@month_options) %>
-  <%= select_tag :day, options_for_select(@day_options) %>
-  <%= select_tag :year, options_for_select(@year_options) %>
-  <%# <%= select_date Time.now, order: [:month, :day, :year] %>
-  <%= form.submit "Search" %>
-<% end %>
-  
+<%= render "form" %>
+<%= render "submission_results" %>

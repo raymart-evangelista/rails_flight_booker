@@ -12,11 +12,11 @@ class FlightsController < ApplicationController
         @departing_airport = Airport.find_by_id(params[:departure_code])
         @arriving_airport = Airport.find_by_id(params[:arrival_code])
           # find flights with departing airport and arriving airport
-        flight_path = Flight.where(departure_id: @departing_airport.id)
+        @path = Flight.where(departure_id: @departing_airport.id)
                             .where(arrival_id: @arriving_airport.id)
                             .where(start_datetime: @selected_date.all_day)
-        if flight_path.exists?
-          flash.now[:notice] = "Flight exists! There are #{flight_path.count} flights"
+        if @path.exists?
+          flash.now[:notice] = "Flight exists! There are #{@path.count} flights."
           # binding.pry
           # check selected date
         else
