@@ -16,11 +16,11 @@ class FlightsController < ApplicationController
                             .where(arrival_id: @arriving_airport.id)
                             .where(start_datetime: @selected_date.all_day)
         if @path.exists?
-          flash.now[:notice] = "Flight exists! There are #{@path.count} flights."
+          # flash.now[:notice] = "Flight exists! There are #{@path.count} flights."
           # binding.pry
           # check selected date
         else
-          flash.now[:alert] = "That flight does not exist."
+          # flash.now[:alert] = "That flight does not exist."
         end
       end
     else

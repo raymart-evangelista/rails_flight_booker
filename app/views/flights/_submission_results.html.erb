@@ -2,18 +2,27 @@
 <% else %>
   <% if @path.exists? %>
     <p>A path exists!</p>
-    <% @path.each do |flight| %>
-      <%= flight.departing_airport[:code] %>
+    <%# @path.each do |flight| %>
+      <%#= flight.departing_airport[:code] %>
       <br>
-      <%= flight.arriving_airport[:code] %>
+      <%#= flight.arriving_airport[:code] %>
       <br>
-      <%= ActiveSupport::Duration.build(flight.duration).inspect %>
+      <%#= ActiveSupport::Duration.build(flight.duration).inspect %>
       <br>
-      <%= flight.start_datetime.utc.strftime('%m/%d/%Y %H:%M %p') %>
+      <%#= flight.start_datetime.utc.strftime('%m/%d/%Y %H:%M %p') %>
       <br>
+    <%= form_with do |form|%>
+      <%= form.collection_radio_buttons :flight_choice, @path.all, :id, :flight_path_with_details do |b| %>
+        <div>
+          <%= b.radio_button %>
+          <%= b.label %>
+          <%=  %>
+        </div>
+      <% end %>
     <% end %>
-    
+    <%# end %> 
   <% else %>
-    <p>NO path exists!</p>
+    <% flash.now[:alert] = "That flight does not exist." %>
   <% end %>
 <% end %>
+
