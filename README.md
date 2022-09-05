@@ -34,3 +34,6 @@
 - `collection_radio_buttons`
   - I wanted to customize what information to put as the label for each radio button and didn't know how to incorporate that. I learned (by reading the following documentation) to put a method in the Flight model to use in the Flight views `submission_results` partial form's `collection_radio_button` `text_method`
   - https://apidock.com/rails/v4.0.2/ActionView/Helpers/FormOptionsHelper/collection_radio_buttons
+
+- `form_with` hidden fields
+  - https://stackoverflow.com/questions/64533667/how-to-add-a-hidden-field-to-form-with

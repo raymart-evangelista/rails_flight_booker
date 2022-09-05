@@ -1,7 +1,7 @@
 <% if @path.nil? %>
 <% else %>
   <% if @path.exists? %>
-    <%= form_with do |form|%>
+    <%= form_with model: Booking.new, method: :get do |form|%>
       <%= form.collection_radio_buttons :flight_choice, @path.all, :id, :flight_path_with_details, { checked: @path.first.id } do |b| %>
         <div>
           <%= b.radio_button %>
@@ -9,6 +9,8 @@
           <%=  %>
         </div>
       <% end %>
+      <%= hidden_field(:booking, :value => :passenger_amt) %>
+      <%= form.submit "Book flight" %>
     <% end %>
     <%# end %> 
   <% else %>
