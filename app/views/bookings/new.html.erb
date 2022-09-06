@@ -1,10 +1,30 @@
-<%= form_with do |form| %>
-<%# display currently chosen dates, airports, flight ID %>
-<% @current_flight = Flight.find_by(id: @flight_id) %>
-<% @departing_code = @current_flight.departing_airport.code %>
-<% @arriving_code = @current_flight.arriving_airport.code %>
-<% @chosen_date = @current_flight.start_datetime %>
-<% @duration = @current_flight.duration %>
-
-<%# display set of fields to enter personal information for each passenger %>
-<%= end %>
+<div class="container">
+  <%= form_with model: @passenger do |form| %>
+  <%# display currently chosen dates, airports, flight ID %>
+    <% @current_flight = Flight.find_by(id: @flight_id) %>
+    <% @departing_code = @current_flight.departing_airport.code %>
+    <% @arriving_code = @current_flight.arriving_airport.code %>
+    <% @chosen_date = @current_flight.start_datetime %>
+    <% @duration = @current_flight.duration %>
+  
+    <div class="container">
+      <div class="card text-center">
+        <div class="card-header"><%= @chosen_date.to_fs(:long_ordinal) %></div>
+        <div class="card-body">
+          <h5 class="card-title"><%= @departing_code %> -> <%= @arriving_code %></h5>
+          <p class="card-text"><%= @duration.inspect %></p>
+          <p class="card-text">FLIGHT ID: <%= @current_flight.id %></p>
+        </div>
+        <div class="card-footer text-muted"><i>Booking for <%= @passenger_amt %>
+        <% if @passenger_amt.to_i > 1 %>
+          passengers
+        <% else %>
+          passenger
+        <% end %>
+        </i></div>
+      </div>
+    </div>
+  
+  <%# display set of fields to enter personal information for each passenger %>
+  <% end %>
+</div>
