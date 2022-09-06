@@ -11,6 +11,7 @@ class FlightsController < ApplicationController
         # do the search
         @departing_airport = Airport.find_by_id(params[:departure_code])
         @arriving_airport = Airport.find_by_id(params[:arrival_code])
+        @passenger_amt = params[:passenger_amt]
           # find flights with departing airport and arriving airport
         @path = Flight.where(departure_id: @departing_airport.id)
                             .where(arrival_id: @arriving_airport.id)

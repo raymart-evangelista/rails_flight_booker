@@ -1,15 +1,15 @@
 <% if @path.nil? %>
 <% else %>
   <% if @path.exists? %>
-    <%= form_with model: Booking.new, method: :get do |form|%>
-      <%= form.collection_radio_buttons :flight_choice, @path.all, :id, :flight_path_with_details, { checked: @path.first.id } do |b| %>
+    <%= form_with url: "bookings/new", method: :get do |form|%>
+      <%= form.collection_radio_buttons :flight_id, @path.all, :id, :flight_path_with_details, { checked: @path.first.id } do |b| %>
         <div>
           <%= b.radio_button %>
           <%= b.label %>
           <%=  %>
         </div>
       <% end %>
-      <%= hidden_field(:booking, :value => :passenger_amt) %>
+      <%= form.hidden_field :passenger_amt, value: @passenger_amt %>
       <%= form.submit "Book flight" %>
     <% end %>
     <%# end %> 
