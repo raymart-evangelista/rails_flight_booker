@@ -1,0 +1,10 @@
+<%= form_with do |form| %>
+<%# display currently chosen dates, airports, flight ID %>
+<% @current_flight = Flight.find_by(id: @flight_id) %>
+<% @departing_code = @current_flight.departing_airport.code %>
+<% @arriving_code = @current_flight.arriving_airport.code %>
+<% @chosen_date = @current_flight.start_datetime %>
+<% @duration = @current_flight.duration %>
+
+<%# display set of fields to enter personal information for each passenger %>
+<%= end %>
