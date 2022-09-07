@@ -1,0 +1,14 @@
+<% @booking.passengers.each do |passenger| %>
+  <div class="container col-md-6">
+    <div class="card text-center">
+      <div class="card-header"><%= passenger.name %></div>
+      <div class="card-body">
+        <h5 class="card-title"><%= @booking.flight.departing_airport.code %> -> <%= @booking.flight.arriving_airport.code %></h5>
+        <p class="card-text"><%= @booking.flight.duration.inspect %></p>
+        <p class="card-text">FLIGHT ID: <%= @booking.flight_id %></p>
+        <p class="card-text">PASSENGER ID: <%= passenger.id %></p>
+      </div>
+      <div class="card-footer text-muted"><i>Ticket for <%= passenger.email %></i></div>
+    </div>
+  </div>
+<% end %>

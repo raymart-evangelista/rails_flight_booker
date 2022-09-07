@@ -8,15 +8,21 @@ class BookingsController < ApplicationController
     @passenger_amt.times { @booking.passengers.build }
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def create
+    # @booking = Flight.find(id: @flight_id).bookings.build(booking_params)
     @booking = Booking.new(booking_params)
 
     if @booking.save
       flash.now[:notice] = "Flight booked successfully"
-      # redirect_to @booking
+      redirect_to @booking
     else
-      flash.now[:alert] = "Something went wrong"
-      #redirect_to root_path
+      # flash.now[:alert] = "Something went wrong"
+      puts @booking.errors.full_messages
+      redirect_to root_path, status: :unprocessable_entity
     end
   end
 

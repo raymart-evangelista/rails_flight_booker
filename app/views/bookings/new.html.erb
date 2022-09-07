@@ -7,6 +7,9 @@
     <% @chosen_date = @current_flight.start_datetime %>
     <% @duration = @current_flight.duration %>
     <% @passenger_amt = @passenger_amt.to_i %>
+
+    <%= form.hidden_field :flight_id, value: @flight_id %>
+    <%= form.hidden_field :passenger_amt, value: @passenger_amt %>
   
     <div class="container col-md-6">
       <div class="card text-center">
