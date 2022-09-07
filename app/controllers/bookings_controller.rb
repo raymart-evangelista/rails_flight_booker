@@ -17,10 +17,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      flash.now[:notice] = "Flight booked successfully"
+      flash[:notice] = "Flight booked successfully"
       redirect_to @booking
     else
-      # flash.now[:alert] = "Something went wrong"
+      flash[:alert] = "Something went wrong"
       puts @booking.errors.full_messages
       redirect_to root_path, status: :unprocessable_entity
     end

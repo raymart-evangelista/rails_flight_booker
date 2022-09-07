@@ -1,5 +1,8 @@
 # README
 
+## Future refactoring
+- style, add input validation
+
 ## About
 - The main learning outcome of this project is to work with advanced forms and active record callbacks (?)
 
@@ -7,20 +10,8 @@
 
 - The project can be found on The Odin Project: https://www.theodinproject.com/lessons/ruby-on-rails-flight-booker
 
-
-## Rough idea of data architecture
-### Screen 1: Search
-- Airport model
-  - contains airport code
-  - `has_many` flights
-
-- Flight model
-  - contains departure and arrival airport `id`s, start datetime, and flight duration
--  `belongs_to` airport
-
-### Screen 2: Pick a flight
-
-### Screen 3: Passenger information
+## Challenges
+- I spent many hours trying to figure out why my `BookingsController` was not saving the current `booking` from the `bookings#new` form. I also didn't know how to build the `passengers` for the `booking` object. After much googling, ultimately in `BookingsController#new`, I followed [this SO post](https://stackoverflow.com/questions/18540679/rails-4-accepts-nested-attributes-for-and-mass-assignment) for building the `passengers` objects (linked from the project directions as well). And I added `hidden_field` tags for `flight_id` and `passenger_amt` in the `views/bookings/new.html.erb` form to pass in the `params` to `BookingsController#create`.
 
 ## Resources
 
