@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container col align-items-center">
   <%= form_with model: @booking do |form| %>
   <%# display currently chosen dates, airports, flight ID %>
     <% @current_flight = Flight.find_by(id: @flight_id) %>
@@ -8,7 +8,7 @@
     <% @duration = @current_flight.duration %>
     <% @passenger_amt = @passenger_amt.to_i %>
   
-    <div class="container">
+    <div class="container col-md-6">
       <div class="card text-center">
         <div class="card-header"><%= @chosen_date.to_fs(:long_ordinal) %></div>
         <div class="card-body">
@@ -26,23 +26,19 @@
       </div>
     </div>
     <%# display set of fields to enter personal information for each passenger %>
-    <div class="container">
-      <% @passenger_amt.times do %>
-        <%= form.fields_for @booking.passengers do |passengers_form| %>
-          <%#= render "passenger_fields", form: passengers_form %>
-          <div>
-            <div>
-              <%= passengers_form.label :name %>
-              <%= passengers_form.text_field :name %>
-            </div>
-            <div>
-              <%= passengers_form.label :email %>
-              <%= passengers_form.text_field :email %>
-            </div>
+    <div class="container col-md-6">
+        <%= form.fields_for :passengers do |passengers_form| %>
+        <%#= render "passenger_fields", form: passengers_form %>
+        <div class="row">
+          <div class="col">
+            <%= passengers_form.text_field :name, class: "form-control", placeholder: "Full Name" %>
           </div>
-        <% end %>
+          <div class="col">
+            <%= passengers_form.text_field :email, class: "form-control", placeholder: "Email Address" %>
+          </div>
+        </div>
       <% end %>
+    <%= form.submit class: "btn btn-primary" %>
     </div>
-    <%= form.submit %>
   <% end %>
 </div>

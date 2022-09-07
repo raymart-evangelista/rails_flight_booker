@@ -37,3 +37,6 @@
 
 - `form_with` hidden fields
   - https://stackoverflow.com/questions/64533667/how-to-add-a-hidden-field-to-form-with
+
+- nested forms
+  - https://guides.rubyonrails.org/form_helpers.html#building-complex-forms
