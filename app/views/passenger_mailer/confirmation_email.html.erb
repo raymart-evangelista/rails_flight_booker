@@ -4,6 +4,9 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>This is a flight booking confirmation for <%= @passenger.name %></h1>
+    <h1>This is a flight booking confirmation for:</h1>
+    <h2><%= @passenger.name %></h2>
+    <br>
+    <p>To check out your flight and booking details, please visit the <%= link_to "booking page", @url %>.</p>
   </body>
 </html>

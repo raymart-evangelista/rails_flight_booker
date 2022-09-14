@@ -1,1 +1,7 @@
-This is a flight booking confirmation for <%= @passenger.name %>
+This is a flight booking confirmation for: 
+
+  <%= @passenger.name %>
+
+To check out your flight and booking details, please visit the booking page at:
+
+  <%= booking_url(@booking) %>
