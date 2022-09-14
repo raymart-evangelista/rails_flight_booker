@@ -2,6 +2,7 @@
 
 ## Future refactoring
 - style, add input validation
+- [connect mailer to heroku as extra credit](https://www.theodinproject.com/lessons/ruby-on-rails-sending-confirmation-emails#assignment)
 
 ## About
 - The main learning outcome of this project is to work with advanced forms and active record callbacks (?)
