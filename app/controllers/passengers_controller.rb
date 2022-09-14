@@ -5,6 +5,10 @@ class PassengersController < ApplicationController
 
   def create
     @passenger = Passenger.new(passenger_params)
+
+    if @passenger.save
+      PassengerMailer.with(passenger: @passenger).confirmation_email.deliver_now!
+    end
   end
 
   private
